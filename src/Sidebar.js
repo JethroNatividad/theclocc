@@ -1,9 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Sidebar.css'
 import searchIcon from './icons/search.svg'
+import * as Scroll from 'react-scroll';
+
 const Sidebar = ({ changeTimezone, timezone, timezoneList }) => {
     const [results, setResults] = useState([])
     const [inputValue, setInputValue] = useState('')
+    useEffect(() => {
+        Scroll.animateScroll.scrollToTop()
+
+    }, [results])
     return (
         <div className="Main-sidebar">
             <div className="searchbar">
@@ -33,11 +39,14 @@ const Sidebar = ({ changeTimezone, timezone, timezoneList }) => {
                     <h2 className="bottom-title">Not found</h2>
 
                     <div className="divider" />
-                </> : null}
-                <div className="timezones">
+                    <div className="timezones">
+                        <h2 className="bottom-title">Timezones</h2>
+                        {timezoneList.map(result => (<p className={`timezone-item ${timezone === result.query && 'timezone-item-active'}`} onClick={() => changeTimezone(result.query)} >{result.text}</p>))}
+                    </div>
+                </> : <div className="timezones">
                     <h2 className="bottom-title">Timezones</h2>
                     {timezoneList.map(result => (<p className={`timezone-item ${timezone === result.query && 'timezone-item-active'}`} onClick={() => changeTimezone(result.query)} >{result.text}</p>))}
-                </div>
+                </div>}
             </div>
 
         </div>
