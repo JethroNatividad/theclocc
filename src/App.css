@@ -3,6 +3,7 @@
 	width: 100vw;
 	background-color: #e9e9e9;
 	display: flex;
+	background-image: url('./images/day.jpg');
 }
 .Main {
 	width: 60%;
@@ -12,6 +13,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	color: #fff;
 }
 .Main-clock {
 	display: flex;
@@ -36,5 +38,8 @@
 
 .Sidebar {
 	width: 40%;
-	background-color: blue;
+	/* make this background transparent */
+	background-color: rgba(0, 0, 0, 0.1);
+	/* make it blur */
+	backdrop-filter: blur(9px);
 }
