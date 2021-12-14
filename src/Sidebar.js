@@ -18,7 +18,7 @@ const Sidebar = ({ changeTimezone, timezone, timezoneList }) => {
                         setResults(results)
                     }
                     setInputValue(e.target.value)
-                }} className="search-input" type="text" placeholder="Another timezone" />
+                }} className="search-input" type="text" placeholder="Search" />
                 <div className="search-button">
                     <img src={searchIcon} alt="search" className="search-icon" />
                 </div>
