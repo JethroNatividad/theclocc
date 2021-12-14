@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     async function main() {
       try {
-        const response = await axios.get('http://worldtimeapi.org/api/ip');
+        const response = await axios.get('https://worldtimeapi.org/api/ip');
         const { data } = response;
         setDatetime(data.datetime)
         setTimeZone(data.timezone)
@@ -38,7 +38,7 @@ function App() {
   useEffect(() => {
     async function main() {
       try {
-        const response = await axios.get('http://worldtimeapi.org/api/timezone');
+        const response = await axios.get('https://worldtimeapi.org/api/timezone');
         const { data } = response;
         const mappedTimezones = data.map(timezone => {
           const x = timezone.lastIndexOf('/')
@@ -69,7 +69,7 @@ function App() {
   const changeTimezone = async (timezone) => {
     try {
       setLoading(true)
-      const response = await axios.get(`http://worldtimeapi.org/api/timezone/${timezone}`);
+      const response = await axios.get(`https://worldtimeapi.org/api/timezone/${timezone}`);
       const { data } = response;
       setDatetime(data.datetime)
       setTimeZone(data.timezone)
