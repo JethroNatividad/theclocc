@@ -41,6 +41,21 @@ function App() {
     }
   })
 
+  const changeTimezone = async (timezone) => {
+    try {
+      setLoading(true)
+      const response = await axios.get(`http://worldtimeapi.org/api/timezone/${timezone}`);
+      const { data } = response;
+      setDatetime(data.datetime)
+      setTimeZone(data.timezone)
+      setUtcOffset(data.utc_offset)
+      setAbbreviation(data.abbreviation)
+      setLoading(false)
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="App">
@@ -51,7 +66,7 @@ function App() {
         </div>
       </div>
       <div className="Sidebar">
-        <Sidebar />
+        <Sidebar changeTimezone={changeTimezone} timezone={timezone} />
       </div>
     </div>
   );
