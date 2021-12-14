@@ -23,16 +23,19 @@ const Sidebar = ({ changeTimezone, timezone, timezoneList }) => {
             </div>
             <div className="bottom-sidebar">
                 {results.length > 0 && inputValue.length > 0 ? <>
+                    <h2 className="bottom-title">Search Result</h2>
+
                     <div className="search-results">
                         {results.map(result => (<p className={`timezone-item ${timezone === result.query && 'timezone-item-active'}`} onClick={() => changeTimezone(result.query)}>{result.text}</p>))}
                     </div>
                     <div className="divider" />
                 </> : inputValue.length > 0 ? <>
-                    <p className="not-found">Not found</p>
+                    <h2 className="bottom-title">Not found</h2>
+
                     <div className="divider" />
                 </> : null}
                 <div className="timezones">
-                    <h2>Timezones</h2>
+                    <h2 className="bottom-title">Timezones</h2>
                     {timezoneList.map(result => (<p className={`timezone-item ${timezone === result.query && 'timezone-item-active'}`} onClick={() => changeTimezone(result.query)} >{result.text}</p>))}
                 </div>
             </div>

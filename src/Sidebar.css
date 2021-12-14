@@ -8,7 +8,7 @@
 .searchbar {
 	display: flex;
 	justify-content: space-between;
-	padding-left: 5%;
+	padding-left: 4%;
 }
 .search-input {
 	border-top: none;
@@ -34,28 +34,32 @@
 	align-items: center;
 	cursor: pointer;
 }
-.search-results {
+/* .search-results {
 	padding: 5% 0;
 }
 .timezones {
 	padding: 5% 0;
-}
+} */
 
-.timezones > h2 {
+/* .timezones > h2 {
 	font-size: 1.4rem;
 	font-weight: 500;
 	color: #fff;
 	margin-bottom: 30px;
+} */
+.bottom-title {
+	font-size: 1.4rem;
+	font-weight: 500;
+	color: #fff;
+	margin-bottom: 30px;
+	margin-top: 30px;
 }
 .timezone-item {
 	cursor: pointer;
 	font-size: 1rem;
 	margin: 5% 0;
 }
-.not-found {
-	font-size: 1rem;
-	margin: 5% 0;
-}
+
 .timezone-item-active {
 	color: #fff;
 }
