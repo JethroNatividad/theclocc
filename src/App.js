@@ -10,8 +10,11 @@ function App() {
   const [timezone, setTimeZone] = useState(null)
   const [utcOffset, setUtcOffset] = useState('')
   const [abbreviation, setAbbreviation] = useState('')
+  const [timezoneList, setTimezoneList] = useState([])
+  const [loadingTimezones, setLoadingTimezones] = useState(true)
   const [loading, setLoading] = useState(true)
 
+  // get current timezone based on ip address
   useEffect(() => {
     async function main() {
       try {
@@ -31,8 +34,30 @@ function App() {
     main()
   }, [])
 
+  // get all timezones
   useEffect(() => {
-    if (!loading) {
+    async function main() {
+      try {
+        const response = await axios.get('http://worldtimeapi.org/api/timezone');
+        const { data } = response;
+        const mappedTimezones = data.map(timezone => {
+          const x = timezone.lastIndexOf('/')
+          return { query: timezone, text: timezone.substring(x + 1) }
+        })
+        setTimezoneList(mappedTimezones)
+        setLoadingTimezones(false)
+
+      } catch (error) {
+        console.log(error);
+      }
+
+    }
+    main()
+  }, [])
+
+
+  useEffect(() => {
+    if (!loading && !loadingTimezones) {
       const interval = setInterval(() => {
         setDatetime(moment(datetime).add(1, 's').format())
         console.log('run')
@@ -66,7 +91,7 @@ function App() {
         </div>
       </div>
       <div className="Sidebar">
-        <Sidebar changeTimezone={changeTimezone} timezone={timezone} />
+        <Sidebar changeTimezone={changeTimezone} timezone={timezone} timezoneList={timezoneList} />
       </div>
     </div>
   );

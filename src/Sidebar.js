@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Sidebar.css'
 import searchIcon from './icons/search.svg'
-const Sidebar = ({ changeTimezone, timezone }) => {
+const Sidebar = ({ changeTimezone, timezone, timezoneList }) => {
     const [results, setResults] = useState([{ query: "Africa/Abidjan", text: 'Abidjan' }])
     return (
         <div className="Main-sidebar">
@@ -19,7 +19,7 @@ const Sidebar = ({ changeTimezone, timezone }) => {
                 <div className="divider" />
                 <div className="timezones">
                     <h2>Timezones</h2>
-                    {results.map(result => (<p className="timezone-item">{result.text}</p>))}
+                    {timezoneList.map(result => (<p className="timezone-item">{result.text}</p>))}
                 </div>
             </div>
 
