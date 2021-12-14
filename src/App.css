@@ -15,26 +15,6 @@
 	justify-content: space-between;
 	color: #fff;
 }
-.Main-clock {
-	display: flex;
-	align-items: center;
-}
-
-.time {
-	font-size: 5rem;
-	font-weight: 500;
-	margin-right: 1rem;
-}
-.timezone-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-.timezone {
-	font-size: 2rem;
-	font-weight: 500;
-}
 
 .Sidebar {
 	width: 40%;
