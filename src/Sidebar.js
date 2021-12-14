@@ -19,7 +19,7 @@ const Sidebar = ({ changeTimezone, timezone, timezoneList }) => {
                 <div className="divider" />
                 <div className="timezones">
                     <h2>Timezones</h2>
-                    {timezoneList.map(result => (<p className="timezone-item">{result.text}</p>))}
+                    {timezoneList.map(result => (<p className={`timezone-item ${timezone === result.query && 'timezone-item-active'}`} onClick={() => changeTimezone(result.query)} >{result.text}</p>))}
                 </div>
             </div>
 
