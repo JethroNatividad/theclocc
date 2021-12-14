@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './Sidebar.css'
 import searchIcon from './icons/search.svg'
-import * as Scroll from 'react-scroll';
 
 const Sidebar = ({ changeTimezone, timezone, timezoneList }) => {
     const [results, setResults] = useState([])
     const [inputValue, setInputValue] = useState('')
-    useEffect(() => {
-        Scroll.animateScroll.scrollToTop()
 
-    }, [results])
     return (
         <div className="Main-sidebar">
             <div className="searchbar">
