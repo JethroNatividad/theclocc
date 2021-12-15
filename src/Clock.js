@@ -9,7 +9,8 @@ const Clock = ({ timezone, datetime, utc_offset }) => {
             <p className="time">{moment.tz(datetime, timezone).format('HH:mm:ss')}</p>
             <div className="timezone-container">
                 <p className="timezone">{timezone}</p>
-                <p>{utc_offset} - Sunday, 6 Dec 10</p>
+                <p>{utc_offset} - {moment.tz(datetime, timezone).format('dddd, MMMM D YYYY')}</p>
+
             </div>
         </div>
     )
