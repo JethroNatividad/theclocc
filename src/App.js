@@ -66,6 +66,15 @@ function App() {
     }
   })
 
+  const checkIfDayOrNight = () => {
+    const hour = moment(datetime).hours()
+    if (hour > 6 && hour < 18) {
+      return 'day'
+    } else {
+      return 'night'
+    }
+  }
+
   const changeTimezone = async (timezone) => {
     try {
       setLoading(true)
@@ -83,7 +92,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className={`App ${checkIfDayOrNight()}`}>
       <div className="Main">
         <div className="Main-title">the.CLOCC</div>
         <div className="Main-clock">
