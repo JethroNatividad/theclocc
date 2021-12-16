@@ -93,8 +93,13 @@ function App() {
     }
   }
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen)
+  const toggleSidebar = (e, bool) => {
+    console.log(bool)
+    if (bool) {
+      setSidebarOpen(bool)
+    } else {
+      setSidebarOpen(!sidebarOpen)
+    }
   }
 
   return (

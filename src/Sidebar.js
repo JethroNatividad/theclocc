@@ -6,6 +6,11 @@ const Sidebar = ({ changeTimezone, timezone, timezoneList, toggleSidebar }) => {
     const [results, setResults] = useState([])
     const [inputValue, setInputValue] = useState('')
 
+    const handleTimezoneChange = (result) => {
+        changeTimezone(result.query)
+        toggleSidebar(false)
+    }
+
     return (
         <div className="Main-sidebar">
             <div className="searchbar">
@@ -28,7 +33,7 @@ const Sidebar = ({ changeTimezone, timezone, timezoneList, toggleSidebar }) => {
                     <h2 className="bottom-title">Search Result</h2>
 
                     <div className="search-results">
-                        {results.map(result => (<p className={`timezone-item ${timezone === result.query && 'timezone-item-active'}`} onClick={() => changeTimezone(result.query)}>{result.text}</p>))}
+                        {results.map(result => (<p className={`timezone-item ${timezone === result.query && 'timezone-item-active'}`} onClick={() => handleTimezoneChange(result)}>{result.text}</p>))}
                     </div>
                     <div className="divider" />
                 </> : inputValue.length > 0 ? <>
@@ -37,11 +42,11 @@ const Sidebar = ({ changeTimezone, timezone, timezoneList, toggleSidebar }) => {
                     <div className="divider" />
                     <div className="timezones">
                         <h2 className="bottom-title">Timezones</h2>
-                        {timezoneList.map(result => (<p className={`timezone-item ${timezone === result.query && 'timezone-item-active'}`} onClick={() => changeTimezone(result.query)} >{result.text}</p>))}
+                        {timezoneList.map(result => (<p className={`timezone-item ${timezone === result.query && 'timezone-item-active'}`} onClick={() => handleTimezoneChange(result)} >{result.text}</p>))}
                     </div>
                 </> : <div className="timezones">
                     <h2 className="bottom-title">Timezones</h2>
-                    {timezoneList.map(result => (<p className={`timezone-item ${timezone === result.query && 'timezone-item-active'}`} onClick={() => changeTimezone(result.query)} >{result.text}</p>))}
+                    {timezoneList.map(result => (<p className={`timezone-item ${timezone === result.query && 'timezone-item-active'}`} onClick={() => handleTimezoneChange(result)} >{result.text}</p>))}
                 </div>}
             </div>
 
