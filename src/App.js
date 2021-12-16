@@ -5,6 +5,7 @@ import Sidebar from './Sidebar';
 import axios from 'axios';
 import moment from 'moment'
 import searchIcon from './icons/search.svg'
+import loadingIcon from './icons/loading.svg'
 
 function App() {
   const [datetime, setDatetime] = useState(null)
@@ -101,9 +102,13 @@ function App() {
       setSidebarOpen(!sidebarOpen)
     }
   }
-
+  if (loading && loadingTimezones) {
+    return <div className="loading"><img src={loadingIcon} alt="loading" />
+    </div>
+  }
   return (
     <div className={`App ${checkIfDayOrNight()}`}>
+
       <div className={`Main ${sidebarOpen ? 'hidden' : 'max-width'}`}>
         <div className="top">
           <p className="Main-title">the.CLOCC</p>
