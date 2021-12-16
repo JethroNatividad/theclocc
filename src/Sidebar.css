@@ -102,3 +102,19 @@
 		width: 3rem;
 	}
 }
+
+@media (max-width: 768px) {
+	.bottom-title {
+		font-size: 1.5rem;
+	}
+	.timezone-item {
+		font-size: 1rem;
+	}
+	.search-input {
+		font-size: 1.5rem;
+	}
+	.search-button {
+		height: 3rem;
+		width: 3rem;
+	}
+}
