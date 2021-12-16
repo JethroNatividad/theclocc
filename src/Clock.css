@@ -1,6 +1,7 @@
 .Main-clock {
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap-reverse;
 }
 
 .time {
@@ -11,8 +12,9 @@
 .timezone-container {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
+	margin-right: 3rem;
 }
 .timezone {
 	font-size: 2rem;
