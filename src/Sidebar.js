@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './Sidebar.css'
 import searchIcon from './icons/search.svg'
 
-const Sidebar = ({ changeTimezone, timezone, timezoneList }) => {
+const Sidebar = ({ changeTimezone, timezone, timezoneList, toggleSidebar }) => {
     const [results, setResults] = useState([])
     const [inputValue, setInputValue] = useState('')
 
@@ -19,7 +19,7 @@ const Sidebar = ({ changeTimezone, timezone, timezoneList }) => {
                     }
                     setInputValue(e.target.value)
                 }} className="search-input" type="text" placeholder="Search" />
-                <div className="search-button">
+                <div className="search-button" onClick={toggleSidebar}>
                     <img src={searchIcon} alt="search" className="search-icon" />
                 </div>
             </div>

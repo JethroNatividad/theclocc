@@ -4,6 +4,7 @@ import Clock from './Clock';
 import Sidebar from './Sidebar';
 import axios from 'axios';
 import moment from 'moment'
+import searchIcon from './icons/search.svg'
 
 function App() {
   const [datetime, setDatetime] = useState(null)
@@ -13,6 +14,7 @@ function App() {
   const [timezoneList, setTimezoneList] = useState([])
   const [loadingTimezones, setLoadingTimezones] = useState(true)
   const [loading, setLoading] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   // get current timezone based on ip address
   useEffect(() => {
@@ -91,16 +93,25 @@ function App() {
     }
   }
 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen)
+  }
+
   return (
     <div className={`App ${checkIfDayOrNight()}`}>
-      <div className="Main">
-        <div className="Main-title">the.CLOCC</div>
+      <div className={`Main ${sidebarOpen ? 'hidden' : 'max-width'}`}>
+        <div className="top">
+          <p className="Main-title">the.CLOCC</p>
+          <div className="search-button-main" onClick={toggleSidebar}>
+            <img src={searchIcon} alt="search" className="search-icon" />
+          </div>
+        </div>
         <div className="Main-clock">
           <Clock timezone={timezone} datetime={datetime} utc_offset={utcOffset} />
         </div>
       </div>
-      <div className="Sidebar">
-        <Sidebar changeTimezone={changeTimezone} timezone={timezone} timezoneList={timezoneList} />
+      <div className={`Sidebar ${sidebarOpen ? 'max-width' : 'hidden'}`}>
+        <Sidebar toggleSidebar={toggleSidebar} changeTimezone={changeTimezone} timezone={timezone} timezoneList={timezoneList} />
       </div>
     </div>
   );
